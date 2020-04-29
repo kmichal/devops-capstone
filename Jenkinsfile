@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Linting') {
             steps {
-                sh ‘tidy -q -e *.html’
+                sh 'tidy -q -e *.html'
             }
         }
         stage('Build image') {
@@ -11,7 +11,7 @@ pipeline {
                 def customImage = docker.build("my-image:${env.BUILD_ID}")
             }
         }
-        stage(Push image') {
+        stage('Push image') {
 
         }
         stage('set current kubectl context') {
