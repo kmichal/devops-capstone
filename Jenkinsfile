@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Linting') {
             steps {
-                sh 'tidy -q -e *.html'
+
+                sh 'tidy -q -e src/*.html'
             }
         }
         stage('Build image') {
