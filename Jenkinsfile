@@ -1,4 +1,8 @@
 pipeline {
+    environment {
+        registry = "michalkrasucki/capstone"
+        registryCredential = 'dockerhub'
+    }
     agent any
     stages {
         stage('Linting') {
