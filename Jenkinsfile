@@ -2,6 +2,7 @@ pipeline {
     environment {
         registry = "michalkrasucki/capstone"
         registryCredential = 'dockerhub'
+        customImage = ''
     }
     agent any
     stages {
@@ -14,7 +15,7 @@ pipeline {
         stage('Build image') {
             steps {
                 script {
-                    def customImage = docker.build("app-image:${env.BUILD_ID}")
+                    def customImage = docker.build("capstone-image:${env.BUILD_ID}")
                 }
             }
         }
