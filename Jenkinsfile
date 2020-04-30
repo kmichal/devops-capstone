@@ -8,7 +8,9 @@ pipeline {
         }
         stage('Build image') {
             steps {
-                def customImage = docker.build("my-image:${env.BUILD_ID}")
+                script {
+                    def customImage = docker.build("app-image:${env.BUILD_ID}")
+                }
             }
         }
         stage('Push image') {
@@ -23,7 +25,7 @@ pipeline {
         }
         stage('Deploy container') {
             steps {
-                
+
             }
         }
     }
