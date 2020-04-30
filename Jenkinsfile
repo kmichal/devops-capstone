@@ -15,7 +15,9 @@ pipeline {
         }
         stage('Push image') {
             steps {
-
+                script {
+                    customImage.push('latest')
+                }
             }
         }
         stage('set current kubectl context') {
