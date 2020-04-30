@@ -22,12 +22,12 @@ pipeline {
         }
         stage('set current kubectl context') {
             steps {
-
+                sh 'echo "set current kubectl context"'
             }
         }
         stage('Deploy container') {
             steps {
-
+                sh 'echo "deploy"'
             }
         }
     }
