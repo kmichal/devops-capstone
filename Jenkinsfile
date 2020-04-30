@@ -16,13 +16,14 @@ pipeline {
             steps {
                 script {
                     def customImage = docker.build("capstone-image:${env.BUILD_ID}")
+                    customImage.push('latest')
                 }
             }
         }
         stage('Push image') {
             steps {
                 script {
-                    customImage.push('latest')
+                    
                 }
             }
         }
