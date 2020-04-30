@@ -22,9 +22,7 @@ pipeline {
         }
         stage('Push image') {
             steps {
-                script {
-                    
-                }
+                sh 'Push image'
             }
         }
         stage('set current kubectl context') {
