@@ -16,7 +16,7 @@ pipeline {
             steps {
                 script {
                     def customImage = docker.build("capstone-image:${env.BUILD_ID}")
-                    docker.withRegistry( registry, registryCredential ) {
+                    docker.withRegistry( '', registryCredential ) {
                         customImage.push('latest')
                     }
                 }
