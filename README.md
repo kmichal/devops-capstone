@@ -6,7 +6,7 @@ This project is the Capstone project at [Cloud DevOps Engineer Nanodegree](https
 
 ## Setup
 
-* Spin up an EC2 instance on AWS with SSH access and run './setup_jenkins.sh' on it and setup jenkins one all packages are installed
-* SSH back into your jenkins server and run './setup_aws.sh'. This will run eksctl utility which will generate CloudFomation scrips and run them in your AWS account
-* Once CouldFormation is finished deploying run './setup_kubernetes.sh' which will create a deployment in the Kubernetes cluster
+* Spin up an EC2 instance on AWS with SSH access and run `./setup_jenkins.sh` on it and setup jenkins one all packages are installed
+* SSH back into your jenkins server and run `./setup_aws.sh`. This will run eksctl utility which will generate CloudFomation scrips and run them in your AWS account
+* Once CouldFormation is finished deploying run `./setup_kubernetes.sh` which will create a deployment in the Kubernetes cluster
 
