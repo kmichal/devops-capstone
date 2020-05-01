@@ -32,7 +32,9 @@ pipeline {
         stage('Deploy container') {
             steps {
                 dir('kube_resources') {
-                    sh 'kubectl apply -f k8_deployment.yaml'
+                    withAWS(credentials: 'jenkins', region: 'us-west-2') {
+                        sh 'kubectl apply -f k8_deployment.yaml'
+                    }
                 }
             }
         }
