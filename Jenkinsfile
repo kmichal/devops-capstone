@@ -31,7 +31,9 @@ pipeline {
         }
         stage('Deploy container') {
             steps {
-                sh 'kubectl apply -f kube_resources/k8_deployment.yaml'
+                dir('kube_resources') {
+                    sh 'kubectl apply -f k8_deployment.yaml'
+                }
             }
         }
         stage('Clean up docker'){
