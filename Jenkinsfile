@@ -33,7 +33,7 @@ pipeline {
             steps {
                 dir('kube_resources') {
                     withAWS(credentials: 'jenkins', region: 'us-west-2') {
-                        sh 'kubectl apply -f k8_deployment.yaml'
+                        sh ' kubectl set image deployment/udacity capstone=michalkrasucki/capstone --record'
                     }
                 }
             }
