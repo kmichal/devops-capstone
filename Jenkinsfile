@@ -12,7 +12,7 @@ pipeline {
                 sh 'tidy -q -e src/*.html'
             }
         }
-        stage('Build image') {
+        stage('Build image and push') {
             steps {
                 script {
                     def customImage = docker.build(repo + ":${env.BUILD_ID}")
@@ -22,19 +22,21 @@ pipeline {
                 }
             }
         }
-        stage('Push image') {
-            steps {
-                sh 'Push image'
-            }
-        }
         stage('set current kubectl context') {
             steps {
-                sh 'echo "set current kubectl context"'
+                withAWS(credentials: 'aws-credentials', region: 'us-west-2') {
+                    sh "aws eks --region us-west-2 update-kubeconfig --name capstone"
+                }
             }
         }
         stage('Deploy container') {
             steps {
-                sh 'echo "deploy"'
+                sh 'kubectl apply -f kube_resources/k8_deployment.yaml'
+            }
+        }
+        stage('Clean up docker'){
+            steps {
+                sh 'docker image rm ' + repo + ":${env.BUILD_ID}"
             }
         }
     }
